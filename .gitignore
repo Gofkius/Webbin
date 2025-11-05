@@ -90,3 +90,6 @@ typings/
 
 # Electron-Forge
 out/
+
+# React Component Preview
+previewConfig.json

@@ -15,7 +15,7 @@
 
 body {
   background-color: #faf5dc;
-  background-image: url('src/images/background-logo.svg'), url('src/images/background-logo.svg');
+  background-image: url('../public/images/background-logo.svg'), url('../public/images/background-logo.svg');
   background-size: 8rem 8rem;
   background-position: 0 0, 4rem 4rem; /* second layer offset halfway */
   background-repeat: repeat;

@@ -24,7 +24,7 @@ const Navbar = (props: Props) => {
   return (
     <div className='navbar-full'>
         <div className="navbar">
-            <div onClick={handleHomeNavigate} className='logo-navbar'><img src="src/images/logo.svg" alt="" /></div>
+            <div onClick={handleHomeNavigate} className='logo-navbar'><img src="./images/logo.svg" alt="" /></div>
             <button onClick={handleHomeNavigate}>Home</button>
             <button onClick={handleAboutNavigate}>Explore</button>
             <button onClick={handleLogoutNavigate}>Design</button>

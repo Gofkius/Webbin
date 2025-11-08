@@ -1,10 +1,10 @@
-import { Fragment } from "react"
+import {Fragment} from "react";
 import {
     Category,
     Component,
     Variant,
     Palette,
-} from "@react-buddy/ide-toolbox"
+} from "@react-buddy/ide-toolbox";
 
 export const PaletteTree = () => (
     <Palette>
@@ -16,10 +16,10 @@ export const PaletteTree = () => (
             </Component>
         </Category>
     </Palette>
-)
+);
 
 export function ExampleLoaderComponent() {
     return (
         <Fragment>Loading...</Fragment>
-    )
+    );
 }

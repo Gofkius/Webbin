@@ -1,24 +1,56 @@
-import React from 'react'
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from '../App';
+
+export let exportedUser: any = null;
 
 type Props = {}
 
 const Login = (props: Props) => {
   const navigate = useNavigate();
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    // Perform login logic here
-    navigate('/');
-  };
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState(null);
+
+const handleSubmit = async (event: React.FormEvent) => {
+  event.preventDefault(); // <- stop normal form submit
+  setError(null);
+
+  if (!username || !password) {
+    setError('Email and password are required');
+    return;
+  }
+
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: username,
+      password: password,
+    });
+
+    console.log('signIn response', { data, error });
+    if (error) {
+      setError(error.message);
+    } else {
+      setUser((data as any).user);
+      exportedUser = (data as any).user;
+      navigate('/');
+    }
+  } catch (err) {
+    console.error('signInWithPassword failed', err);
+    setError('Unexpected error — check console');
+  }
+};
 
   return (
     <div className='login-container'>
         <h1>Welcome Back 👋</h1>
+        <div className="error-message">{error}</div>
         <form onSubmit={handleSubmit}>
             <div className="input-group">
-              <input type="text" id="username" name="username" placeholder="Username or email" />
-              <input type="password" id="password" name="password" placeholder="Password" />
+              <input type="text" id="username" name="username" placeholder="Email" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <input type="password" id="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             <div className='submit-button'>
               <button type="submit">Login</button>

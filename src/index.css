@@ -169,6 +169,14 @@ button {
     width: 100%;
   }
 
+  .error-message {
+    color: var(--error-color);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    height: 1rem;
+  }
+
   .input-group {
     width: 80%;
     margin: auto;
@@ -274,5 +282,34 @@ button {
       text-decoration: none;
       font-size: 1rem;
     }
+  }
+}
+
+.settings-modal {
+  position: absolute;
+  top: 6rem;
+  right: 1.3rem;
+  width: 15rem;
+  background-color: #ffffff;
+  border: 0.1rem solid #BC6C25;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  button {
+    width: 100%;
+    background-color: var(--error-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
   }
 }

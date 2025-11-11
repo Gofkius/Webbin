@@ -23,6 +23,11 @@ lib-cov
 coverage
 *.lcov
 
+# Webstorm
+.idea/
+
+.vscode/
+
 # nyc test coverage
 .nyc_output
 
@@ -59,6 +64,7 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.*
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)

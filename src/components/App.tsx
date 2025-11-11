@@ -6,18 +6,32 @@ import About from './pages/About';
 import '../index.css';
 import { createClient } from '@supabase/supabase-js';
 
-export const supabase = createClient('https://uxfupnubotknwkcthuep.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4ZnVwbnVib3RrbndrY3RodWVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1NTU1MjEsImV4cCI6MjA3NjEzMTUyMX0.g_epxbwk6HMJVdq4uZaIAYIqNLCxmmJDqE9hbtKGoNc')
+export const supabase = createClient(
+  'https://uxfupnubotknwkcthuep.supabase.co', 
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4ZnVwbnVib3RrbndrY3RodWVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1NTU1MjEsImV4cCI6MjA3NjEzMTUyMX0.g_epxbwk6HMJVdq4uZaIAYIqNLCxmmJDqE9hbtKGoNc',
+  {
+    auth: {
+      storage: typeof window !== 'undefined' ? window.localStorage : undefined,
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: false
+    }
+  }
+)
 
 export const SessionContext = createContext<{ session: any | null; setSession: (s: any) => void } | null>(null);
 
 const App = () => {
-  const [session, setSession] = useState(null)
+  const [session, setSession] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     let sub: any;
     (async () => {
       // Read session that supabase-js persisted to localStorage (browser behaviour)
       const { data: { session: current } } = await supabase.auth.getSession();
       setSession(current ?? null);
+      setLoading(false);
 
       // keep in sync with auth changes
       const res = supabase.auth.onAuthStateChange((_event, s) => setSession(s ?? null));
@@ -26,6 +40,26 @@ const App = () => {
 
     return () => sub?.unsubscribe?.();
   }, []);
+
+  if (loading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        height: '100vh',
+        backgroundColor: 'var(--color-bg-primary)'
+      }}>
+        <div style={{ 
+          fontSize: '1rem', 
+          color: 'var(--color-text-secondary)',
+          fontWeight: 500 
+        }}>
+          Loading...
+        </div>
+      </div>
+    );
+  }
 
   return (
     <SessionContext.Provider value={{ session, setSession }}>
@@ -47,6 +81,4 @@ const App = () => {
     </SessionContext.Provider>
   );
 };
-
-
 export default App;

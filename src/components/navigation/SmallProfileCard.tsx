@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { SessionContext } from '../App';
+import { SessionContext, supabase } from '../App';
 import { useContext } from 'react';
 
 type Props = {}
@@ -47,11 +47,18 @@ const SmallProfileCard = (props: Props) => {
 }
 
 const settingsModal = (onClose: () => void) => {
-    const { setSession } = useContext(SessionContext);
+  const ctx = useContext(SessionContext);
     
-  function handleLogout() {
-    setSession(null);
-    onClose();
+  async function handleLogout() {
+    try {
+      // Sign out from Supabase (clears localStorage and session)
+      await supabase.auth.signOut();
+      // Clear the context session state
+      ctx?.setSession(null);
+      onClose();
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   }
 
   return (

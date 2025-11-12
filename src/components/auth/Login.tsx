@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { supabase } from '../App';
 
 export let exportedUser: any = null;
@@ -56,17 +56,17 @@ const handleSubmit = async (event: React.FormEvent) => {
               <button type="submit">Login</button>
             </div>
             <div className='forgot-password'>
-              <a href="/forgot-password">Forgot Password?</a>
+              <Link to="/forgot-password">Forgot Password?</Link>
             </div>
             <div className='break-line'/>
             <div className='social-login'>
-              <button className='google-login'>Google</button>
-              <button className='github-login'>GitHub</button>
+              <button disabled={true} className='google-login'>Google</button>
+              <button disabled={true} className='github-login'>GitHub</button>
             </div>
             <div className='break-line'/>
             <div className='register-account'>
               <p>Don't have an account? </p>
-              <a href="/register">Register</a>
+              <Link to="/register">Register</Link>
             </div>
         </form>
     </div>

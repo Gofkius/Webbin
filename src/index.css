@@ -148,14 +148,14 @@ button {
   align-items: center;
 }
 
-.login-container {
+.login-container, .register-container {
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: #ffffff;
   width: 23rem;
-  height: 40rem;
+  height: auto;
   align-items: center;
   border: 0.1rem solid #BC6C25;
   border-radius: 2rem;
@@ -169,12 +169,17 @@ button {
     width: 100%;
   }
 
+  .register-header {
+    width: 80%;
+    text-align: center;
+  }
+
   .error-message {
     color: var(--error-color);
     font-size: 1rem;
     margin-bottom: 1rem;
     text-align: center;
-    height: 1rem;
+    height: auto;
   }
 
   .input-group {
@@ -185,6 +190,12 @@ button {
     flex-direction: column;
     margin-bottom: 1rem;
     gap: 1rem;
+
+    .input-name{
+      display: flex;
+      width: 100%;
+      gap: 1rem;
+    }
 
     input {
       padding: 0.8rem;
@@ -268,7 +279,7 @@ button {
 
   .register-account {
     width: 80%;
-    margin: 0 auto;
+    margin: 2rem auto;
     text-align: center;
 
     h4 {

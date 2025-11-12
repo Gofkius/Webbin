@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import '../index.css';
 import { createClient } from '@supabase/supabase-js';
+import Register from './auth/Register';
 
 export const supabase = createClient(
   'https://uxfupnubotknwkcthuep.supabase.co', 
@@ -28,12 +29,10 @@ const App = () => {
   useEffect(() => {
     let sub: any;
     (async () => {
-      // Read session that supabase-js persisted to localStorage (browser behaviour)
       const { data: { session: current } } = await supabase.auth.getSession();
       setSession(current ?? null);
       setLoading(false);
 
-      // keep in sync with auth changes
       const res = supabase.auth.onAuthStateChange((_event, s) => setSession(s ?? null));
       sub = res.data.subscription;
     })();
@@ -65,7 +64,8 @@ const App = () => {
     <SessionContext.Provider value={{ session, setSession }}>
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={!session ? <Register /> : <Navigate to="/" replace />} />
+        <Route path="/login" element={!session ? <Login /> : <Navigate to="/" replace />} />
         <Route
           path="/"
           element={session ? <Home /> : <Navigate to="/login" replace />}

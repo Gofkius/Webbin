@@ -41,14 +41,16 @@
     "vite": "^5.4.21"
   },
   "dependencies": {
-    "@react-buddy/ide-toolbox": "^2.4.0",
     "@supabase/auth-ui-react": "^0.4.7",
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/supabase-js": "^2.79.0",
     "electron-squirrel-startup": "^1.0.1",
     "keytar": "^7.9.0",
+    "konva": "^10.0.12",
     "react": "^19.2.0",
+    "react-colorful": "^5.6.1",
     "react-dom": "^19.2.0",
+    "react-konva": "^19.2.0",
     "react-router-dom": "^7.9.5",
     "supabase": "^2.54.11",
     "v": "^0.3.0"

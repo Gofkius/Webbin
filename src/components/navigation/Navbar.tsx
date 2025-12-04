@@ -12,7 +12,11 @@ const Navbar = (props: Props) => {
     function handleHomeNavigate() {
         navigate('/');
     }
-    
+
+    function handleDesignNavigate() {
+        navigate('/design');
+    }
+
     function handleAboutNavigate() {
         navigate('/about');
     }
@@ -27,7 +31,7 @@ const Navbar = (props: Props) => {
             <div onClick={handleHomeNavigate} className='logo-navbar'><img src="./images/logo.svg" alt="" /></div>
             <button onClick={handleHomeNavigate}>Home</button>
             <button onClick={handleAboutNavigate}>Explore</button>
-            <button onClick={handleLogoutNavigate}>Design</button>
+            <button onClick={handleDesignNavigate}>Design</button>
         </div>
         <SmallProfileCard />
     </div>

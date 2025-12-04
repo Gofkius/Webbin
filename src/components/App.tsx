@@ -6,6 +6,7 @@ import About from './pages/About';
 import '../index.css';
 import { createClient } from '@supabase/supabase-js';
 import Register from './auth/Register';
+import Design from './pages/Design';
 
 export const supabase = createClient(
   'https://uxfupnubotknwkcthuep.supabase.co', 
@@ -73,6 +74,10 @@ const App = () => {
         <Route
           path="/about"
           element={session ? <About /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/design"
+          element={session ? <Design /> : <Navigate to="/login" replace />}
         />
         {/* catch-all */}
         <Route path="*" element={<Navigate to={session ? '/' : '/login'} replace />} />

@@ -404,6 +404,11 @@ button {
 
 /* Home Page Styles */
 
+.home-container, .about-container {
+  padding: 1rem;
+  margin: auto;
+}
+
 .section-title {
   font-size: 2rem;
   font-weight: 700;

@@ -5,9 +5,9 @@ type Props = {}
 
 const About = (props: Props) => {
   return (
-    <div>
+    <div className='about-container'>
         <Navbar />
-        <h1>This is the about page</h1>
+        <h1>Aqui falta implementación de mostar diseños y poder buscar y filtrar</h1>
     </div>
   )
 }

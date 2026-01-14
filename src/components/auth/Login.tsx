@@ -49,24 +49,24 @@ const handleSubmit = async (event: React.FormEvent) => {
         <div className="error-message">{error}</div>
         <form onSubmit={handleSubmit}>
             <div className="input-group">
-              <input type="text" id="username" name="username" placeholder="Email" value={username} onChange={(e) => setUsername(e.target.value)} />
-              <input type="password" id="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input title="Use the email you signed up with" type="text" id="username" name="username" placeholder="Email" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <input title="Use the password you signed up with" type="password" id="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             <div className='submit-button'>
-              <button type="submit">Login</button>
+              <button title="Click to sign in" type="submit">Login</button>
             </div>
             <div className='forgot-password'>
-              <Link to="/forgot-password">Forgot Password?</Link>
+              <Link title="Click to reset your password" to="/forgot-password">Forgot Password?</Link>
             </div>
             <div className='break-line'/>
             <div className='social-login'>
-              <button disabled={true} className='google-login'>Google</button>
-              <button disabled={true} className='github-login'>GitHub</button>
+              <button title="Sign in with Google (currently disabled)" disabled={true} className='google-login'>Google</button>
+              <button title="Sign in with GitHub (currently disabled)" disabled={true} className='github-login'>GitHub</button>
             </div>
             <div className='break-line'/>
             <div className='register-account'>
               <p>Don't have an account? </p>
-              <Link to="/register">Register</Link>
+              <Link title="Click to register a new account" to="/register">Register</Link>
             </div>
         </form>
     </div>

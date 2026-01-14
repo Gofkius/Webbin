@@ -6,6 +6,7 @@ import { MakerRpm } from '@electron-forge/maker-rpm';
 import { VitePlugin } from '@electron-forge/plugin-vite';
 import { FusesPlugin } from '@electron-forge/plugin-fuses';
 import { FuseV1Options, FuseVersion } from '@electron/fuses';
+import path from 'path';
 
 const config: ForgeConfig = {
   packagerConfig: {
@@ -17,8 +18,9 @@ const config: ForgeConfig = {
     // Windows installer
     new MakerSquirrel({
       name: 'Webbin',
-      authors: 'Your Name',
-      setupIcon: 'assets/icon.ico', // optional
+      authors: 'Gabrielius Dikcius',
+      // Ruta absoluta para evitar el error "File not found" en Wine
+      setupIcon: path.join(__dirname, 'public', 'images', 'logo.ico'),
     }),
     // ZIP files for cross-platform distribution
     new MakerZIP({}, ['darwin', 'win32', 'linux']),

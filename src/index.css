@@ -1031,3 +1031,13 @@ button {
     height: 200px;
   }
 }
+
+.help-menu{
+  ul{
+    li:hover{
+      background-color: #f0e6d2;
+      cursor: pointer;
+      
+    }
+  }
+}

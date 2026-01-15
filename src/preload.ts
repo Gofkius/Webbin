@@ -6,4 +6,5 @@ import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('electronAPI', {
   showAlert: (type: 'info' | 'warning' | 'error' | 'question', message: string) =>
     ipcRenderer.send('show-alert', { type, message }),
+  openNewWindow: () => ipcRenderer.send('open-new-window'),
 });

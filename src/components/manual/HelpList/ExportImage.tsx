@@ -5,12 +5,14 @@ type Props = {}
 const ExportImage = (props: Props) => {
   return (
     <>
-        <h1>Exportando tu trabajo</h1>
-        <p>Esta sección te guiará a través del proceso de exportación de tus diseños como imágenes.</p>
-        <h2>Acceder a la opción de exportación</h2>
-        <p>Para exportar tu diseño, primero debes acceder al menú de exportación. Esto se puede hacer haciendo clic en el botón "Exportar" ubicado en la esquina superior derecha de la interfaz.</p>
+        <h1>Exportar tu diseño</h1>
+        <p>Guarda tu proyecto como imagen PNG para compartirlo o usarlo fuera de la aplicación.</p>
+        <h2>Exportar como PNG</h2>
+        <p>Haz clic en el botón "Export" en la barra superior. Se descargará un archivo PNG del lienzo.</p>
         <img src="/images/help/export1.png" alt="Export Button" style={{width: '100%', maxWidth: '600px', marginTop: '10px', marginBottom: '10px'}} />
-        <p>Una vez que hayas hecho clic en el botón de exportación, se te presentará un menu donde tienes que elegir el nombre y donde quieres guardar el fichero, se guardara la imagen en formato PNG.</p>
+        <p>El nombre por defecto del archivo es <strong>design.png</strong>. Si necesitas otro nombre, puedes renombrarlo después de la descarga.</p>
+        <p><strong>Consejo:</strong> solo se exportan los elementos visibles. Si quieres excluir algo, ocúltalo desde <strong>Layers</strong> antes de exportar.</p>
+        <p>El zoom o el desplazamiento de la vista no afectan al resultado final: la exportación se genera a tamaño real del lienzo.</p>
         <img src="/images/help/export2.png" alt="Select Image Format" style={{width: '100%', maxWidth: '600px', marginTop: '10px', marginBottom: '10px'}} />
     </>
   )

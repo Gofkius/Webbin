@@ -1,14 +1,13 @@
 import React from 'react'
-import Manual from '../Manual';
 
 type Props = {}
 
 const GettingStarted = (props: Props) => {
   return (
     <>
-        <h1>Bienvenidos al Manual</h1>
-        <p>Este manual está diseñado para ayudarte a navegar y utilizar todas las funciones de nuestra aplicación de manera efectiva. Ya seas un principiante o un usuario experimentado, encontrarás información valiosa aquí.</p>
-        <p>Para comenzar, haz clic en cualquiera de los temas a la izquierda.</p>
+        <h1>Bienvenido al manual</h1>
+        <p>Esta guía rápida te ayudará a encontrar y usar las funciones principales de la aplicación.</p>
+        <p>Para empezar, selecciona un tema en el menú de la izquierda.</p>
     </>
   )
 }

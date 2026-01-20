@@ -22,7 +22,6 @@ const Manual = (props: Props) => {
                 <li onClick={() => setActiveTab("AccountSetup")}>Configuración de la Cuenta</li>
                 <li onClick={() => setActiveTab("CreateProject")}>Creando un Proyecto</li>
                 <li onClick={() => setActiveTab("UsingDesigner")}>Usando la Herramienta de Diseño</li>
-                <li onClick={() => setActiveTab("ExportImage")}>Exportando tu Trabajo</li>
                 {/*
                 <li>Atajos y Consejos</li>
                 <li>Solución de Problemas</li>
@@ -38,7 +37,6 @@ const Manual = (props: Props) => {
             {activeTab === "AccountSetup" && <AccountSetup />}
             {activeTab === "CreateProject" && <CreateProject />}
             {activeTab === "UsingDesigner" && <UsingDesigner />}
-            {activeTab === "ExportImage" && <ExportImage />}
         </div>
     </div>
   )

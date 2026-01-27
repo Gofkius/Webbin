@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { SessionContext, supabase } from '../App';
 import { useContext } from 'react';
+import ReportsModal from '../reports/ReportsModal';
+
 
 type Props = {}
 
@@ -48,7 +50,7 @@ const SmallProfileCard = (props: Props) => {
 
 const SettingsModal = ({ onClose }: { onClose: () => void }) => {
   const ctx = useContext(SessionContext);
-  const [view, setView] = useState<'main' | 'accessibility'>('main');
+  const [view, setView] = useState<'main' | 'accessibility' | 'reports'>('main');
 
   async function handleLogout() {
     try {
@@ -74,6 +76,12 @@ const SettingsModal = ({ onClose }: { onClose: () => void }) => {
       [key]: !prev[key]
     }));
   };
+
+  if (view === 'reports') {
+    return (
+      <ReportsModal onClose={() => setView('main')} />
+    );
+  }
 
   if (view === 'accessibility') {
     return (
@@ -143,6 +151,20 @@ const SettingsModal = ({ onClose }: { onClose: () => void }) => {
       >
         <span>Accessibility</span>
         <img src="./images/accessibility.svg" alt="" style={{ width: '1.2rem', height: '1.2rem' }}/>
+      </button>
+      <button 
+        onClick={() => setView('reports')}
+        style={{ 
+            marginBottom: '0.5rem', 
+            backgroundColor: 'transparent', 
+            color: '#333', 
+            border: '1px solid #ccc',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+        }}
+      >
+        <span>Reports</span>
       </button>
       <button onClick={handleLogout}>Logout</button>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import ReactPDFChart from 'react-pdf-charts';
 import { AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell, LineChart, Line, XAxis, YAxis, CartesianGrid, Legend, Tooltip } from 'recharts';
 import { ReportData } from '../../types/reports.types';
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     padding: 30,
   },
   header: {
+    flexDirection: 'row',
     marginBottom: 20,
     borderBottom: '2 solid #6366f1',
     paddingBottom: 10,
@@ -173,10 +174,18 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({ data }) => {
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.title}>User Analytics Report</Text>
-          <Text style={styles.subtitle}>
-            Generated on {formatDateTime(data.generatedAt)}
-          </Text>
+          <View>
+            <Text style={styles.title}>Gabrielius Dikcius</Text>
+            <Text style={styles.subtitle}>
+              Generated on {formatDateTime(data.generatedAt)}
+            </Text>
+            <Text style={styles.subtitle}>
+              Recuperacion Final
+            </Text>
+          </View>
+          <View style={{ marginLeft: 'auto' }}>
+            <Image src="public/images/logoTransparent.png" style={{width: 50, height: 50}} />
+          </View>
         </View>
 
         {/* Statistics Overview */}
@@ -243,7 +252,7 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({ data }) => {
         {/* Activity Chart */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Daily Activity (Last 30 Days)</Text>
-          <Text style={{ fontSize: 9, color: "#6b7280", marginBottom: 5 }}>Purple: New Users • Green: Sign-Ins</Text>
+          <Text style={{ fontSize: 9, color: "#6b7280", marginBottom: 5 }}>Purple: New Users -- Green: Sign-Ins</Text>
           <ReactPDFChart>
             <BarChart width={520} height={240} data={recentActivity}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
